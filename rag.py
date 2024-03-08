@@ -1,4 +1,9 @@
-from datasets import load_dataset
+'''
+This script is a simple example of how to use Pinecone and OpenAI's API to build a simple RAG system.
+using wikipedia data, which comes with embedding already., so we just upsert the embeddings to Pinecone.
+for each query, we use (hopefully the same) langauge model to get embeddings for semantic search,
+then use the results to build a prompt for the LLM to generate a summary.
+'''
 from pinecone import Pinecone, ServerlessSpec
 from tqdm.auto import tqdm
 from util import Utils

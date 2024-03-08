@@ -1,3 +1,9 @@
+'''
+This script demonstrates how to use Pinecone to index and search for semantically similar questions.
+it uses the Quora dataset, we first embed the questions into vectors then upsert the embeddings to Pinecone.
+when a query is recieved, it is first encoded with the same language model,
+the embeddings are then used to find the most similar questions.
+'''
 from datasets import load_dataset
 from sentence_transformers import SentenceTransformer
 from pinecone import Pinecone
@@ -50,9 +56,6 @@ def index_docs(dataset_name: str, pinecone_index: str):
 
 
 if __name__ == "__main__":
-    '''
-    This script demonstrates how to use Pinecone to index and search for semantically similar questions.
-    '''
     device = utils.get_device()
 
     # load model
