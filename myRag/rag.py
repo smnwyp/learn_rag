@@ -4,12 +4,11 @@ using wikipedia data, which comes with embedding already., so we just upsert the
 for each query, we use (hopefully the same) langauge model to get embeddings for semantic search,
 then use the results to build a prompt for the LLM to generate a summary.
 '''
-from pinecone import Pinecone, ServerlessSpec
+from pinecone import Pinecone
 from tqdm.auto import tqdm
-from util import Utils
+from myRag.util import Utils
 
 import ast
-import os
 import pandas as pd
 
 def load_data(filename:str):
@@ -88,7 +87,7 @@ if __name__ == "__main__":
 
     not_loaded=False
     if not_loaded:
-        df = load_data(filename='./data/wiki.csv')
+        df = load_data(filename='../data/wiki.csv')
         transform_upsert_embedding(df=df, pinecone_index=pinecone_index)
 
     query = "write a comprehensive summary in max 50 words about on: what is a scheibenbremse."
